@@ -1,0 +1,20 @@
+name: ngrok
+version: 0.1.0
+commit_hash: a6ad21e
+uncommitted_changes: false
+jobs:
+- name: ngrok
+  version: 3a3cfba4e173d05f137ac5a58bb395d4211c2385
+  fingerprint: 3a3cfba4e173d05f137ac5a58bb395d4211c2385
+  sha1: 665497aaa6f50dc0235359e90b11cb18db4d2d76
+packages:
+- name: jq
+  version: 295fa6785e0e346590e63dfbd6e697e146f35f48
+  fingerprint: 295fa6785e0e346590e63dfbd6e697e146f35f48
+  sha1: d2d29452a8786522fa531f096c057c831e5099ef
+  dependencies: []
+- name: ngrok
+  version: 46b1cc1f2041491e6c33c0ec7373d24f985e6d88
+  fingerprint: 46b1cc1f2041491e6c33c0ec7373d24f985e6d88
+  sha1: 169bc49ae8abb93fac4ed271c5e33497dbdd95c9
+  dependencies: []
