@@ -1,0 +1,4 @@
+set -e
+
+chmod +x jq/jq
+cp jq/jq ${BOSH_INSTALL_TARGET}/ 

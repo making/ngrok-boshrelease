@@ -1,0 +1,5 @@
+check process ngrok
+  with pidfile /var/vcap/sys/run/bpm/ngrok/ngrok.pid
+  start program "/var/vcap/jobs/bpm/bin/bpm start ngrok"
+  stop program "/var/vcap/jobs/bpm/bin/bpm stop ngrok"
+  group vcap

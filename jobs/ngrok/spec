@@ -1,0 +1,26 @@
+---
+name: ngrok
+
+templates:
+  config/bpm.yml: config/bpm.yml
+  config/ngrok.yml: config/ngrok.yml
+  bin/post-start: bin/post-start
+
+packages:
+- ngrok
+- jq
+
+properties:
+  ngrok.authtoken:
+    description: "authtoken"
+  ngrok.region:
+    description: "ngrok server region"
+    default: "us"
+  ngrok.protocol:
+    description: "ngrok protocol (tcp/http)"
+    default: "tcp"
+  ngrok.host:
+    description: "host to connect"
+    default: "localhost"
+  ngrok.port:
+    description: "port to connect"

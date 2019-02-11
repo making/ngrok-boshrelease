@@ -1,0 +1,9 @@
+processes:
+- name: ngrok
+  executable: /var/vcap/packages/ngrok/ngrok
+  args:
+  - <%= p('ngrok.protocol') %>
+  - --region=<%= p('ngrok.region') %>
+  - --config=/var/vcap/jobs/ngrok/config/ngrok.yml
+  - --log=stdout
+  - <%= p('ngrok.host') %>:<%= p('ngrok.port') %>

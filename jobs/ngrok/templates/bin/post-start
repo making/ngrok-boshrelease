@@ -1,0 +1,28 @@
+#!/bin/bash
+# Inspired by https://github.com/cloudfoundry/exemplar-release/blob/master/jobs/paragon/templates/post-start
+# If a command fails, exit immediately
+set -e
+
+export PATH=$PATH:/var/vcap/packages/jq
+export timeout=200
+export polling_frequency=1
+
+export max_attempts=$((timeout / polling_frequency))
+export attempts=0
+while [[ "$max_attempts" -ge "$attempts" ]]; do
+    set +e
+    echo "attempt $attempts"
+    res=`curl -s -f --max-time $timeout http://127.0.0.1:4040/inspect/http | grep URL`
+    if [[ $? -eq 0 ]]; then
+        url=$(curl -s http://127.0.0.1:4040/inspect/http | grep window.common | sed -e 's/            window.common = JSON.parse(//' -e 's/);//' -e 's/"//g' -e 's/\\/"/g' | jq -r .Session.Tunnels.command_line.URL)
+        echo "URL = ${url}"
+        exit 0
+    fi
+    set -e
+
+    attempts=$(($attempts + 1))
+
+    sleep "$polling_frequency"
+done
+
+exit 1
